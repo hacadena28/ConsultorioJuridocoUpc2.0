@@ -1,0 +1,264 @@
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden vh-100">
+  <div class="container px-4 py-4 px-md-5 text-center text-lg-start my-3">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1
+          class="my-5 display-5 fw-bold ls-tight"
+          style="color: hsl(218, 81%, 95%)"
+        >
+          Consultorio Juridico Virtual UPC<br />
+          <span style="color: hsl(218, 81%, 75%)">Bienvenido</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+          La Facultad de Derecho les ofrece a las personas, que por diferentes
+          razones no puedan ir a las instalaciones del Consultorio Jurídico, la
+          alternativa de realizar consultas a través del Consultorio Jurídico
+          Virtual, el cual se creó con la finalidad de contribuir a la solución
+          de las necesidades de la comunidad, a nivel local, nacional e
+          internacional, que requieren de los servicios sociales gratuitos de
+          carácter jurídico atendido por los estudiantes en coordinación de los
+          docentes de diferentes áreas del derecho, como laboral, penal, civil,
+          familia, comercial y público.
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div
+          id="radius-shape-1"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-2"
+          class="position-absolute shadow-5-strong"
+        ></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-3 px-md-5 my-2">
+            <form (ngSubmit)="registrar()">
+              <div class="form-outline mb-1">
+                <select
+                  name="tipoDeDocumento"
+                  [(ngModel)]="TipoDeDocumento"
+                  class="form-select"
+                  aria-label="Default select example"
+                > <option value="Tipo De Documento" disabled selected>Tipo De Documento</option>
+                  <option
+                    [ngValue]="TipoDeDocumento"
+                    *ngFor="let TipoDeDocumento of listaDocumentos"
+                  >
+                    {{ TipoDeDocumento.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- Numero De Documento input -->
+              <div class="form-outline mb-1">
+                <input
+                  type="number"
+                  id="cedulaTxt"
+                  #cedulaTxt
+                  name="cedulaTxt"
+                  class="form-control"
+                  [(ngModel)]="datosRegistro.cedula"
+                  placeholder="Cedula"
+                />
+              </div>
+
+              <hr />
+              <!-- 2 column Nombres -->
+              <div class="row">
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="primerNombreTxt"
+                      #primerNombreTxt
+                      name="primerNombreTxt"
+                      class="form-control"
+                      placeholder="Primer Nombre"
+                      [(ngModel)]="datosRegistro.primerNombre"
+                    />
+                    <label class="form-label" for="form3Example1"></label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="segundoNombreTxt"
+                      #segundoNombreTxt
+                      name="segundoNombreTxt"
+                      class="form-control"
+                      placeholder="Segundo Nombre"
+                      [(ngModel)]="datosRegistro.segundoNombre"
+                    />
+                    <label class="form-label" for="form3Example2"></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2 column apellidos -->
+              <div class="row">
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="primerApellidoTxt"
+                      #primerApellidoTxt
+                      name="primerApellidoTxt"
+                      class="form-control"
+                      placeholder="Primer Apellido"
+                      [(ngModel)]="datosRegistro.primerApellido"
+                    />
+                    <label class="form-label" for="form3Example1"></label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="segundoApellidoTxt"
+                      #segundoApellidoTxt
+                      name="segundoApellidoTxt"
+                      class="form-control"
+                      placeholder="Segundo Apellido"
+                      [(ngModel)]="datosRegistro.segundoApellido"
+                    />
+                    <label class="form-label" for="form3Example2"></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2 column telefono y direccion -->
+              <div class="row">
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="number"
+                      id="telefonotxt"
+                      #telefonotxt
+                      name="telefonotxt"
+                      class="form-control"
+                      placeholder="Telefono"
+                      [(ngModel)]="datosRegistro.telefono"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="direccionTxt"
+                      #direccionTxt
+                      name="direccionTxt"
+                      class="form-control"
+                      placeholder="Direccion"
+                      [(ngModel)]="datosRegistro.direccion"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <!-- Email input -->
+              <div class="form-outline mb-1">
+                <input
+                  type="email"
+                  id="correoTxt"
+                  #correoTxt
+                  name="correoTxt"
+                  class="form-control"
+                  placeholder="Correo"
+                  [(ngModel)]="datosRegistro.correo"
+                />
+              </div>
+              <div class="form-outline mb-1">
+                <select
+                  name="tipoDeUsuario"
+                  [(ngModel)]="TipoUsuario"
+                  class="form-select"
+                  aria-label="Default select example"
+                > <option value="Tipo De Usuario" disabled selected>Tipo De Usuario</option>
+                
+                 
+                  <option
+                    [ngValue]="TipoUsuario"
+                    *ngFor="let TipoUsuario of listaDeTiposDeUsuario"
+                  >
+                    {{ TipoUsuario.nombre }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- 2 column Contraseña Confirmar contraseña -->
+              <div class="row">
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="password"
+                      id="contrasenaTxt"
+                      #contrasenaTxt
+                      name="contrasenaTxt"
+                      class="form-control"
+                      placeholder="Contraseña"
+                      [(ngModel)]="datosRegistro.contrasena"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="password"
+                      id="confirmarContrasenaTxt"
+                      #confirmarContrasenaTxt
+                      name="confirmarContrasenaTxt"
+                      class="form-control"
+                      placeholder="Confirmar Contraseña"
+                      [(ngModel)]="datosRegistro.confirmarContrasena"
+                    />
+                  </div>
+                </div>
+              </div>
+<hr>
+                <!-- Facultad input -->
+                <div class="form-outline mb-1" *ngIf="TipoUsuario.nombre=='Docente'">
+                  <input
+                    type="facultad"
+                    id="facultadTxt"
+                    #facultadTxt
+                    name="facultadTxt"
+                    class="form-control"
+                    placeholder="Facultad"
+                    [(ngModel)]="datosRegistro.facultad"
+                  />
+                </div>
+
+                    <!-- 2 column Semestre Estado -->
+              <div class="row" *ngIf="TipoUsuario.nombre=='Estudiante'">
+                <div class="col-md-12 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="number"
+                      id="semestreTxt"
+                      #semestreTxt
+                      name="semestreTxt"
+                      class="form-control"
+                      placeholder="Semestre"
+                      [(ngModel)]="datosRegistro.semestre"
+                    />
+                  </div>
+                </div>
+                              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-2">
+                Registrarse
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->

@@ -1,0 +1,56 @@
+<div class="card mb-4">
+  <div class="card-header"><i class="fas fa-table mr-1"></i>Lista Docentes</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>Id Docente</th>
+            <th>Primer Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Correo</th>
+            <th>Facultad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+       
+        <tbody>
+          <tr *ngFor="let docente of docentesConsultados">
+            <td>{{docente.idDocente}}</td>
+            <td>{{docente.primerNombre}}</td>
+            <td>{{docente.segundoNombre}}</td>
+            <td>{{docente.primerApellido}}</td>
+            <td>{{docente.segundoApellido}}</td>
+            <td>{{docente.telefono}}</td>
+            <td>{{docente.direccion}}</td>
+            <td>{{docente.correo}}</td>
+            <td>{{docente.facultad}}</td>
+            <td>
+                <button
+                  _ngcontent-eux-c77=""
+                  class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
+                >
+                  <i _ngcontent-eux-c77="" class="far fa-edit"></i></button
+                ><button
+                  _ngcontent-eux-c77=""
+                  class="m-0 p-0 shadow-0 btn btn-lg text-dark"
+                >
+                  <i _ngcontent-eux-c77="" class="far fa-trash-alt"></i>
+                </button>
+              </td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

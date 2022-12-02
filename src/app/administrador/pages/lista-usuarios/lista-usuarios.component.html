@@ -1,0 +1,43 @@
+<div class="card mb-4">
+  <div class="card-header"><i class="fas fa-table mr-1"></i>Lista Usuarios</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>Id Usuario</th>
+            <th>Correo</th>
+            <th>Tipo Usuario</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let usuario of usuariosConsultados">
+            <td>{{ usuario.idUsuario }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.tipoUsuario }}</td>
+            <td>
+              <button
+                _ngcontent-eux-c77=""
+                class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
+              >
+                <i _ngcontent-eux-c77="" class="far fa-edit"></i></button
+              ><button
+                _ngcontent-eux-c77=""
+                class="m-0 p-0 shadow-0 btn btn-lg text-dark"
+              >
+                <i _ngcontent-eux-c77="" class="far fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

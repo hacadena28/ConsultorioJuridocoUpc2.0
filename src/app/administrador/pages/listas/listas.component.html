@@ -1,0 +1,53 @@
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Usuarios</h1>
+           
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Usuarios</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" routerLink="/administradorPrincipal"  (click)="cambiarLista(1)">Ver lista</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Docente</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link"routerLink="/administradorPrincipal" (click)="cambiarLista(2)">Ver lista</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">Estudiante</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link"routerLink="/administradorPrincipal"  (click)="cambiarLista(3)">Ver lista</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Cliente</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link"routerLink="/administradorPrincipal"  (click)="cambiarLista(4)">Ver lista</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <app-lista-usuarios *ngIf="numeroLista == 1"></app-lista-usuarios>
+            <app-lista-docentes *ngIf="numeroLista == 2"></app-lista-docentes>
+            <app-lista-estudiantes *ngIf="numeroLista == 3"></app-lista-estudiantes>
+           <app-lista-clientes *ngIf="numeroLista == 4"></app-lista-clientes>
+        </div>
+    </main>
+   
+
+

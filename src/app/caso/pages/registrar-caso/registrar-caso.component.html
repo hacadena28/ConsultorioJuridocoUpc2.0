@@ -1,0 +1,140 @@
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div
+    class="p-5 bg-image"
+    style="
+      background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+      height: 300px;
+    "
+  ></div>
+  <!-- Background image -->
+
+  <div
+    class="card mx-4 mx-md-5 shadow-5-strong"
+    style="
+      margin-top: -100px;
+      background: hsla(0, 0%, 100%, 0.8);
+      backdrop-filter: blur(30px);
+    "
+  >
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+       
+          <h2 class="fw-bold mb-5">Registro De Caso</h2>
+
+          <form (ngSubmit)="agregarCaso()" class="col-md-6 justify-content-center">
+            <fieldset>
+              <legend class="text-center header">
+                Ingrese la informacion del caso
+              </legend>
+              <div class="form-group form-outline mb-3">
+             
+                <div class="col-md-12 col-sm-3">
+                    
+                  <input
+                    id="fname"
+                    name="name"
+                    type="text"
+                    placeholder="Nombre Caso"
+                    class="form-control"
+                    [(ngModel)]="caso.nombreCaso"
+                  />
+                </div>
+              </div>
+              <div class="form-group form-outline mb-3">
+               
+                  <div class="col-md-12">
+                    <textarea  [(ngModel)]="caso.descripcion"  class="form-control" id="message" name="message" id=text1 style="WIDTH: 100%; HEIGHT: 98px" size=32 name=text1 placeholder="Tenga en cuenta la siguiente sugerencia:
+                    Escriba la informacion mas relevante para el correcto entendimiento del caso" rows="7"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group form-outline mb-3">
+               
+                <div class="col-md-12">
+                  <input
+                    id="email2"
+                    name="email"
+                    type="text"
+                    placeholder="Id Docente"
+                    class="form-control"
+                    [(ngModel)]="caso.docente"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group form-outline mb-3">
+               
+                <div class="col-md-12">
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    placeholder="Id Estudiante"
+                    class="form-control"
+                    [(ngModel)]="caso.estudiante"
+                  />
+                </div>
+              </div>
+              <div class="form-group form-outline mb-3">
+               
+                <div class="col-md-12">
+                  <input
+                    id="direccion"
+                    name="phone"
+                    type="text"
+                    placeholder="Id Cliente"
+                    class="form-control"
+                    
+                    value="{{cliente.idCliente}}"
+                    
+                    [(ngModel)]="caso.cliente"
+                    
+                  />
+                </div>
+              </div>
+              <div class="form-group form-outline mb-3">
+                
+                <div class="col-md-12">
+                  <input
+                    id="direccion"
+                    name="phone"
+                    type="text"
+                    placeholder="fecha"
+                    class="form-control"
+                    [(ngModel)]="caso.fecha"
+                  />
+                </div>
+              </div>
+              <div class="form-group form-outline mb-3">
+               
+                <div class="col-md-12">
+                  <input
+                    id="direccion"
+                    name="phone"
+                    type="text"
+                    placeholder="estado"
+                    class="form-control"
+                    [(ngModel)]="caso.estado"
+                  />
+                </div>
+              </div>
+              
+
+             
+              <div class="form-group form-outline mb-3">
+                <div class="col-md-12 text-center">
+                  <button type="submit" routerLink="/clientePrincipal" class="btn btn-primary btn-lg">
+                    Registrar
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+</section>
+<!-- Section: Design Block -->

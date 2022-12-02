@@ -1,0 +1,70 @@
+<main>
+  <div class="container-fluid">
+    <h1 class="mt-4">Casos</h1>
+
+    <div class="row">
+      <div class="col-xl-12 col-md-12">
+        <div class="card bg-info text-white mb-4">
+          <div class="card-body">Casos</div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table mr-1"></i>Lista Casos
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Id Caso</th>
+                <th>Nombre Caso</th>
+                <th>Descripcion</th>
+                <th>Docente</th>
+                <th>Estudiante</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let caso of casosConsultados">
+                <td>{{ caso.idCaso }}</td>
+                <td>{{ caso.nombreCaso }}</td>
+                <td>{{ caso.descripcion }}</td>
+                <td>{{ caso.docente }}</td>
+                <td>{{ caso.estudiante }}</td>
+                <td>{{ caso.cliente }}</td>
+                <td>{{ caso.fecha }}</td>
+                <td>{{ caso.estado }}</td>
+                <td>
+                  <button
+                    _ngcontent-eux-c77=""
+                    class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
+                  >
+                    <i _ngcontent-eux-c77="" class="far fa-edit"></i></button
+                  ><button
+                    _ngcontent-eux-c77=""
+                    class="m-0 p-0 shadow-0 btn btn-lg text-dark"
+                  >
+                    <i _ngcontent-eux-c77="" class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</main>
