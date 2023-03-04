@@ -14,5 +14,12 @@ export class CasoService {
   agregarCaso(caso: Caso): Observable<Caso> {
     return this.http.post<Caso>(`${this.urlBase}/Caso`, caso)
   }
+
+  consultarCaso<Data>(caso:Caso|number): Observable<Caso> {
+    //  const idPersona = typeof persona ==='number' ? persona : persona.idPersona;
+    console.log(caso)
+      const url = `${this.urlBase}/Caso/${caso}`;
+      return this.http.get<Caso>(url)
+    }
   
 }

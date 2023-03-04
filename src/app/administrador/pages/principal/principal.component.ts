@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./principal.component.css'],
 })
 export class PrincipalComponent {
-  @Input() numeroMenu: Number = 0;
+  @Input() numeroMenu: Number = 1;
 
   cambiarMenu(numero: Number): void {
     if (numero == 0) {

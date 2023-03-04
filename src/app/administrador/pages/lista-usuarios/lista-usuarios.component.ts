@@ -25,5 +25,18 @@ ngOnInit(): void {
     window.alert("Error al conectar con el servidor");
   } 
 }
+deleteUsuario(usuario: Usuario | number,tipoUsuario:string): void {
+  try {
+    this.administradorService.deleteUsuario(usuario,tipoUsuario).subscribe((result) => {
+      console.log("eliminado");
+      window.alert("Usuario borrado correctamente");
+      window.location.reload();
+    });
+  } catch {
+    window.alert("Errror al borrar");
+  }
+}
+
+
  
 }

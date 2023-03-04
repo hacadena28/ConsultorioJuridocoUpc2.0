@@ -2,34 +2,34 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Caso } from 'src/app/login/interfaces/caso';
-import { Cliente } from 'src/app/login/interfaces/cliente';
+import { Docente } from 'src/app/login/interfaces/docente';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class DocenteService {
   private urlBase = "https://localhost:44380/api";
-  constructor(private http: HttpClient) { }
-  consultarCasos(): Observable<Caso[]> {
+  constructor(private http: HttpClient){}
+  consultarCasos(): Observable<Caso[]>{
     return this.http.get<Caso[]>(`${this.urlBase}/Caso`)
+    
   }
-
-
-  consultarCliente<Data>(cliente:Cliente|number): Observable<Cliente> {
+  consultarDocente<Data>(docente:Docente|number): Observable<Docente> {
     //  const idPersona = typeof persona ==='number' ? persona : persona.idPersona;
-    console.log(cliente)
-      const url = `${this.urlBase}/Cliente/${cliente}`;
-      return this.http.get<Cliente>(url)
+    console.log(docente)
+      const url = `${this.urlBase}/Docente/${docente}`;
+      return this.http.get<Docente>(url)
     }
-    // https://localhost:44380/api/Cliente
-    modificarCliente(cliente: Cliente): Observable<Cliente> {
+
+    modificarDocente(docente: Docente): Observable<Docente> {
       console.log("Modificando final");
       
-        return this.http.put<Cliente>(`${this.urlBase}/Cliente`, cliente)
+        return this.http.put<Docente>(`${this.urlBase}/Docente`, docente)
     }
     modificarCaso(caso: Caso): Observable<Caso> {
       console.log("Modificando final");
       
         return this.http.put<Caso>(`${this.urlBase}/Caso`, caso)
     }
+
 }

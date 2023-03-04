@@ -9,23 +9,45 @@
   
                 <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                 <p class="text-white-50 mb-5">Por favor Ingrese su correo y contraseña!</p>
-                <form (ngSubmit)="validarUsuario()">
+                <form [formGroup]="formularioContacto"  (ngSubmit)="validarUsuarioLogin()">
                 <div class="form-outline form-white mb-4" >
                     <label class="form-label p-0" for="typeEmailX">                  <h5>Correo</h5>
                     </label>
-                    <input type="email" id="typeEmailX" name="correo" [(ngModel)]="userLogin.correo" class="form-control form-control-lg" placeholder="Correo" />
+                    <input type="email" formControlName="correo" id="correo" name="correo" [(ngModel)]="userLogin.correo" class="form-control form-control-lg" placeholder="Correo" required/>
+                    <span *ngIf="this.formularioContacto.get('correo')?.errors?.['required']">
+                      (El correo no puede quedar vacío)
+                    </span>
+                    <span *ngIf="this.formularioContacto.get('correo')?.errors?.['minlength']">
+                      (Debe tener como mínimo 10 caracteres)
+                    </span>
+                    <span *ngIf="this.formularioContacto.get('correo')?.errors?.['maxlength']">
+                      (Debe tener como Maximo 40 caracteres)
+                    </span>
                 </div>
   
                 <div class="form-outline form-white mb-2">
                     <label class="form-label p-0" for="typePasswordX">                  <h5>Contraseña</h5>
                     </label>
-                    <input type="password" id="typePasswordX" name="contrasena" [(ngModel)]="userLogin.contrasena" class="form-control form-control-lg" placeholder="Contraseña"/>
+                    <input type="password" formControlName="contrasena" id="contrasena" name="contrasena" [(ngModel)]="userLogin.contrasena" class="form-control form-control-lg" placeholder="Contraseña" required/>
+                    <span *ngIf="this.formularioContacto.get('contrasena')?.errors?.['required']">
+                      (La contraseña no puede quedar vacío)
+                    </span>
+                    <span *ngIf="this.formularioContacto.get('contrasena')?.errors?.['minlength']">
+                      (Debe tener como mínimo 4 caracteres)
+                    </span>
+                    <span *ngIf="this.formularioContacto.get('contrasena')?.errors?.['maxlength']">
+                      (Debe tener como Maximo 30 caracteres)
+                    </span>
                 </div>
               
-                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvido su contraseña?</a></p>
+                <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvido su contraseña?</a></p> -->
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!"></a></p>
   
                 <!-- <button class="btn btn-outline-light btn-lg px-5" type="submit" routerLink="administradorPrincipal" routerLinkActive="router-link-active">Iniciar sesion</button> -->
-                <button class="btn btn-outline-light btn-lg px-5" type="submit" routerLink="clientePrincipal" routerLinkActive="router-link-active">Iniciar sesion</button>
+                <!-- <button class="btn btn-outline-light btn-lg px-5" type="submit" routerLink="clientePrincipal" routerLinkActive="router-link-active">Iniciar sesion</button> -->
+                <!-- <button class="btn btn-outline-light btn-lg px-5" type="submit" routerLink="docentePrincipal" routerLinkActive="router-link-active">Iniciar sesion</button> -->
+                <!-- <button class="btn btn-outline-light btn-lg px-5" type="submit" routerLink="estudiantePrincipal" routerLinkActive="router-link-active">Iniciar sesion</button> -->
+                <button class="btn btn-outline-light btn-lg px-5" type="submit"  routerLinkActive="router-link-active">Iniciar sesion</button>
               </form>
               
                 <p class="mb-0">No estas registrado? <a routerLink="registrarUsuario" routerLinkActive="router-link-active"  class="text-white-50 fw-bold">Registrate</a>

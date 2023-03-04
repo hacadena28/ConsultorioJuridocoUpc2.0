@@ -6,12 +6,14 @@ import { PrincipalClienteComponent } from './pages/principal-cliente/principal-c
 import { ClienteService } from './services/cliente.service';
 import { CasoModule } from '../caso/caso.module';
 import { AdministradorModule } from '../administrador/administrador.module';
+import { EditarClienteComponent } from './pages/editar-cliente/editar-cliente.component';
 
 
 
 @NgModule({
   declarations: [
-    PrincipalClienteComponent
+    PrincipalClienteComponent,
+    EditarClienteComponent
   ],
   exports:[PrincipalClienteComponent],
   imports: [

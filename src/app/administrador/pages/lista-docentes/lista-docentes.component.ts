@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Docente } from 'src/app/login/interfaces/docente';
+import { Usuario } from 'src/app/login/interfaces/usuario';
 import { AdminstradorService } from '../../services/adminstrador.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ListaDocentesComponent {
 
   }
   @Input() docentesConsulta :Docente[] = [];
-   
+  
    get docentesConsultados(){
     return this.docentesConsulta
   }
@@ -25,4 +26,33 @@ export class ListaDocentesComponent {
       window.alert("Error al conectar con el servidor");
     } 
   }
+
+deleteDocente(docente:Docente | number):void{
+  try{
+    this.administradorService.deleteDocente(docente).subscribe(
+      
+      
+      (result)=>{
+      console.log("eliminando");
+      window.alert("Docente borrado correctamente");
+    })
+  }catch{
+    window.alert("Errror al borrar");
+
+  }
+}
+deleteUsuarioPeticions(usuario: Usuario | number): void {
+  try {
+    this.administradorService.deleteUsuarioPeticion(usuario).subscribe((result) => {
+      console.log("eliminado");
+      window.alert("Usuario borrado correctamente");
+      window.location.reload();
+    });
+  } catch {
+    window.alert("Errror al borrar");
+  }
+}
+
+
+
 }

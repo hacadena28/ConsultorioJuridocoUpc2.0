@@ -35,14 +35,10 @@
             <td>{{docente.correo}}</td>
             <td>{{docente.facultad}}</td>
             <td>
-                <button
-                  _ngcontent-eux-c77=""
-                  class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
-                >
-                  <i _ngcontent-eux-c77="" class="far fa-edit"></i></button
-                ><button
+               <button
                   _ngcontent-eux-c77=""
                   class="m-0 p-0 shadow-0 btn btn-lg text-dark"
+                  (click)="[deleteDocente(docente), deleteUsuarioPeticions(docente.idDocente)]"
                 >
                   <i _ngcontent-eux-c77="" class="far fa-trash-alt"></i>
                 </button>

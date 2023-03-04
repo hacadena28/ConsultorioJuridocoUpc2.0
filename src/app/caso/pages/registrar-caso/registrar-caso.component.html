@@ -33,8 +33,8 @@
                 <div class="col-md-12 col-sm-3">
                     
                   <input
-                    id="fname"
-                    name="name"
+                    id="nombre"
+                    name="nombre"
                     type="text"
                     placeholder="Nombre Caso"
                     class="form-control"
@@ -45,62 +45,64 @@
               <div class="form-group form-outline mb-3">
                
                   <div class="col-md-12">
-                    <textarea  [(ngModel)]="caso.descripcion"  class="form-control" id="message" name="message" id=text1 style="WIDTH: 100%; HEIGHT: 98px" size=32 name=text1 placeholder="Tenga en cuenta la siguiente sugerencia:
+                    <textarea  [(ngModel)]="caso.descripcion"  class="form-control" id="descripcion" name="descripcion" id=text1 style="WIDTH: 100%; HEIGHT: 98px" size=32 name=text1 placeholder="Tenga en cuenta la siguiente sugerencia:
                     Escriba la informacion mas relevante para el correcto entendimiento del caso" rows="7"></textarea>
                 </div>
               </div>
 
-              <div class="form-group form-outline mb-3">
+              <!-- <div class="form-group form-outline mb-3">
                
                 <div class="col-md-12">
                   <input
                     id="email2"
                     name="email"
-                    type="text"
+                    type="number"
                     placeholder="Id Docente"
                     class="form-control"
-                    [(ngModel)]="caso.docente"
+                    (ngModel)="caso.docente"
+                    value=" "
                   />
                 </div>
-              </div>
+              </div> -->
 
-              <div class="form-group form-outline mb-3">
+              <!-- <div class="form-group form-outline mb-3">
                
                 <div class="col-md-12">
                   <input
                     id="phone"
                     name="phone"
-                    type="text"
+                    type="number"
                     placeholder="Id Estudiante"
                     class="form-control"
                     [(ngModel)]="caso.estudiante"
                   />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group form-outline mb-3">
-               
+              
                 <div class="col-md-12">
                   <input
-                    id="direccion"
-                    name="phone"
+                    id="cliente"
+                    name="cliente"
                     type="text"
+                    disabled
                     placeholder="Id Cliente"
                     class="form-control"
                     
                     value="{{cliente.idCliente}}"
-                    
+                  
                     [(ngModel)]="caso.cliente"
                     
                   />
-                </div>
+                </div> 
               </div>
               <div class="form-group form-outline mb-3">
                 
                 <div class="col-md-12">
                   <input
-                    id="direccion"
-                    name="phone"
-                    type="text"
+                    id="fecha"
+                    name="fecha"
+                    type="date"
                     placeholder="fecha"
                     class="form-control"
                     [(ngModel)]="caso.fecha"
@@ -111,8 +113,9 @@
                
                 <div class="col-md-12">
                   <input
-                    id="direccion"
-                    name="phone"
+                    id="estado"
+                    name="estado"
+                    disabled
                     type="text"
                     placeholder="estado"
                     class="form-control"
@@ -125,8 +128,15 @@
              
               <div class="form-group form-outline mb-3">
                 <div class="col-md-12 text-center">
-                  <button type="submit" routerLink="/clientePrincipal" class="btn btn-primary btn-lg">
+                  <button type="submit"  class="btn btn-primary btn-lg">
                     Registrar
+                  </button>
+                </div>
+              </div>
+              <div class="form-group form-outline mb-3">
+                <div class="col-md-12 text-center">
+                  <button type="button" (click)="[cancelarCaso()]" class="btn btn-danger btn-lg">
+                    Cancelar
                   </button>
                 </div>
               </div>

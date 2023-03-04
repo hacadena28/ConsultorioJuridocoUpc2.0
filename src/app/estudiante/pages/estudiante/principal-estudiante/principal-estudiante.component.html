@@ -4,13 +4,13 @@
       <a class="navbar-brand" href="#">Consultar Juridico UPC</a
       ><!-- Navbar Search-->
       <!--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-    </div>
-    </div>
-    </form>-->
+              <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                  <div class="input-group-append">
+                      <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+      </div>
+      </div>
+      </form>-->
       <!-- Navbar-->
     </nav>
   </div>
@@ -26,9 +26,9 @@
               style="width: 150px"
             />
             <h5 class="my-3">
-              {{ cliente.primerNombre }} {{ cliente.primerApellido }}
+              {{ estudiante.primerNombre }} {{ estudiante.primerApellido }}
             </h5>
-            <p class="text-muted mb-1 my-3">Cliente</p>
+            <p class="text-muted mb-1 my-3">Estudiante</p>
             <div class="d-flex justify-content-center mb-2">
               <button
                 type="button"
@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-        <div class="card mb-4 mb-lg-0">
+        <!-- <div class="card mb-4 mb-lg-0">
           <div class="card-body p-0">
             <ul
               class="list-group list-group-flush rounded-3 text-center align-items-center"
@@ -50,15 +50,15 @@
               >
                 <button
                   type="button"
-                  routerLink="/registrarCasos/{{ this.cliente.idCliente }}"
+                  routerLink="/registrarCasos"
                   class="btn btn-primary"
                 >
-                  Agregar Caso
+                  En proceso
                 </button>
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="col-lg-8">
         <div class="card mb-4" *ngIf="edit == 'off'">
@@ -69,8 +69,9 @@
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                  {{ cliente.primerNombre }} {{ cliente.segundoNombre }}
-                  {{ cliente.primerApellido }} {{ cliente.segundoApellido }}
+                  {{ estudiante.primerNombre }} {{ estudiante.segundoNombre }}
+                  {{ estudiante.primerApellido }}
+                  {{ estudiante.segundoApellido }}
                 </p>
               </div>
             </div>
@@ -80,7 +81,7 @@
                 <p class="mb-0">Correo</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ cliente.correo }}</p>
+                <p class="text-muted mb-0">{{ estudiante.correo }}</p>
               </div>
             </div>
             <hr />
@@ -89,7 +90,7 @@
                 <p class="mb-0">Telefono</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ cliente.telefono }}</p>
+                <p class="text-muted mb-0">{{ estudiante.telefono }}</p>
               </div>
             </div>
             <hr />
@@ -98,11 +99,30 @@
                 <p class="mb-0">Direccion</p>
               </div>
               <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ cliente.direccion }}</p>
+                <p class="text-muted mb-0">{{ estudiante.direccion }}</p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Semestre</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ estudiante.semestre }}</p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Estado</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ estudiante.estado }}</p>
               </div>
             </div>
           </div>
         </div>
+        <!-- TODO: editando -->
 
         <!-- editando -->
         <form (ngSubmit)="modificar()">
@@ -110,16 +130,16 @@
             <div class="card-body">
               <div class="row mb-3">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Id Cliente</h6>
+                  <h6 class="mb-0">Id Estudiante</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <input
                     type="text"
                     disabled
                     class="form-control"
-                    [(ngModel)]="cliente.idCliente"
+                    [(ngModel)]="estudiante.idEstudiante"
                     [ngModelOptions]="{ standalone: true }"
-                    value="{{ cliente.idCliente }}"
+                    value="{{ estudiante.idEstudiante }}"
                   />
                 </div>
               </div>
@@ -131,8 +151,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.primerNombre }}"
-                    [(ngModel)]="cliente.primerNombre"
+                    value="{{ estudiante.primerNombre }}"
+                    [(ngModel)]="estudiante.primerNombre"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -145,8 +165,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.segundoNombre }}"
-                    [(ngModel)]="cliente.segundoNombre"
+                    value="{{ estudiante.segundoNombre }}"
+                    [(ngModel)]="estudiante.segundoNombre"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -159,8 +179,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.primerApellido }}"
-                    [(ngModel)]="cliente.primerApellido"
+                    value="{{ estudiante.primerApellido }}"
+                    [(ngModel)]="estudiante.primerApellido"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -173,8 +193,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.segundoApellido }}"
-                    [(ngModel)]="cliente.segundoApellido"
+                    value="{{ estudiante.segundoApellido }}"
+                    [(ngModel)]="estudiante.segundoApellido"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -188,8 +208,8 @@
                     type="text"
                     disabled
                     class="form-control"
-                    value="{{ cliente.correo }}"
-                    [(ngModel)]="cliente.correo"
+                    value="{{ estudiante.correo }}"
+                    [(ngModel)]="estudiante.correo"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -202,8 +222,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.telefono }}"
-                    [(ngModel)]="cliente.telefono"
+                    value="{{ estudiante.telefono }}"
+                    [(ngModel)]="estudiante.telefono"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -217,8 +237,37 @@
                   <input
                     type="text"
                     class="form-control"
-                    value="{{ cliente.direccion }}"
-                    [(ngModel)]="cliente.direccion"
+                    value="{{ estudiante.direccion }}"
+                    [(ngModel)]="estudiante.direccion"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Semestre</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{ estudiante.semestre }}"
+                    [(ngModel)]="estudiante.semestre"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Estado</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    value="{{ estudiante.estado }}"
+                    [(ngModel)]="estudiante.estado"
                     [ngModelOptions]="{ standalone: true }"
                   />
                 </div>
@@ -275,6 +324,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    disabled
                     value="{{ caso.nombreCaso }}"
                     [(ngModel)]="caso.nombreCaso"
                     [ngModelOptions]="{ standalone: true }"
@@ -289,6 +339,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    disabled
                     value="{{ caso.descripcion }}"
                     [(ngModel)]="caso.descripcion"
                     [ngModelOptions]="{ standalone: true }"
@@ -317,8 +368,9 @@
                 <div class="col-sm-9 text-secondary">
                   <input
                     type="text"
-                    class="form-control"
                     disabled
+
+                    class="form-control"
                     value="{{ caso.estudiante }}"
                     [(ngModel)]="caso.estudiante"
                     [ngModelOptions]="{ standalone: true }"
@@ -364,7 +416,6 @@
                   <input
                     type="text"
                     class="form-control"
-                    disabled
                     value="{{ caso.estado }}"
                     [(ngModel)]="caso.estado"
                     [ngModelOptions]="{ standalone: true }"
@@ -397,6 +448,8 @@
 
         <!-- fin editando CASOOOOO -->
 
+        <!-- TODO: FINNN  editando -->
+
         <div class="row">
           <div class="col-md-12">
             <div class="card mb-4">
@@ -424,34 +477,35 @@
 
                     <tbody>
                       <tr *ngFor="let caso of casosConsultados">
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.idCaso }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.nombreCaso }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.descripcion }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.docente }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.estudiante }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.cliente }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.fecha }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           {{ caso.estado }}
                         </td>
-                        <td *ngIf="caso.cliente == cliente.idCliente">
+                        <td *ngIf="caso.estudiante == estudiante.idEstudiante">
                           <button
-                            *ngIf="caso.cliente == cliente.idCliente"
+                            *ngIf="caso.estudiante == estudiante.idEstudiante"
                             (click)="[editandoCaso('on'), cargarCaso(caso)]"
+
                             _ngcontent-eux-c77=""
                             class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
                           >
@@ -460,8 +514,9 @@
                               class="far fa-edit"
                             ></i></button
                           ><button
-                            *ngIf="caso.cliente == cliente.idCliente"
+                            *ngIf="caso.estudiante == estudiante.idEstudiante"
                             (click)="eliminarCaso(caso.idCaso)"
+                            
                             _ngcontent-eux-c77=""
                             class="m-0 p-0 shadow-0 btn btn-lg text-dark"
                           >

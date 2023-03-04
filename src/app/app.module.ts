@@ -10,23 +10,25 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { RegistrarCasoComponent } from './caso/pages/registrar-caso/registrar-caso.component';
 import { CasoModule } from './caso/caso.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { DocenteModule } from './docente/docente.module';
+import { EstudianteModule } from './estudiante/estudiante.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    
-  ],
+  declarations: [AppComponent, SidebarComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     LoginModule,
     AdministradorModule,
-    CasoModule,ClienteModule
-    
+    CasoModule,
+    ClienteModule,
+    DocenteModule,
+    EstudianteModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

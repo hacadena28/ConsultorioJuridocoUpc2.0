@@ -6,10 +6,161 @@
       <div class="col-xl-12 col-md-12">
         <div class="card bg-info text-white mb-4">
           <div class="card-body">Casos</div>
-          
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xl-12 col-md-12">
+        <!-- editando  CASOOOOOO-->
+        <!-- <form (ngSubmit)="modificarCaso()"> -->
+        <form>
+          <div class="card" *ngIf="editCaso == 'on'">
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Id Caso</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control"
+                    [(ngModel)]="caso.idCaso"
+                    [ngModelOptions]="{ standalone: true }"
+                    value="{{ caso.idCaso }}"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Nombre Caso</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{ caso.nombreCaso }}"
+                    [(ngModel)]="caso.nombreCaso"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Descripcion</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{ caso.descripcion }}"
+                    [(ngModel)]="caso.descripcion"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Docente</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    
+                    value="{{ caso.docente }}"
+                    [(ngModel)]="caso.docente"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Estudiante</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    value="{{ caso.estudiante }}"
+                    [(ngModel)]="caso.estudiante"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Cliente</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    disabled
+                    class="form-control"
+                    value="{{ caso.cliente }}"
+                    [(ngModel)]="caso.cliente"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Fecha</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="date"
+                    class="form-control"
+                    value="{{ caso.fecha }}"
+                    disabled
+                    [(ngModel)]="caso.fecha"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Estado</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    value="{{ caso.estado }}"
+                    [(ngModel)]="caso.estado"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9 text-secondary">
+                  <button type="submit" (click)="[editandoCaso('off'),modificarCaso()]"  class="btn btn-primary btn-block mb-2">    Guardar Cambios
+      </button>
+    
+
+    <button type="button" (click)="[editandoCaso('off')]" class="btn btn-danger btn-block mb-2">    Cancelar Cambios
+    </button>
+                  <!-- <button type="submit" (click)="[editandoCaso('off'),modificarCaso()]" class="btn btn-primary btn-block mb-2">    Guardar Cambios
+      </button>
+    
+
+    <button type="button" (click)="[editandoCaso('off')]" class="btn btn-danger btn-block mb-2">    Cancelar Cambios
+    </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- fin editando CASOOOOO -->
+      </div>
+    </div>
+
     <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table mr-1"></i>Lista Casos
@@ -50,11 +201,13 @@
                   <button
                     _ngcontent-eux-c77=""
                     class="me-2 m-0 p-0 shadow-0 btn btn-lg text-dark"
+                    (click)="[editandoCaso('on'),cargarCaso(caso)]"
                   >
                     <i _ngcontent-eux-c77="" class="far fa-edit"></i></button
                   ><button
                     _ngcontent-eux-c77=""
                     class="m-0 p-0 shadow-0 btn btn-lg text-dark"
+                    (click)="deleteCaso(caso)"
                   >
                     <i _ngcontent-eux-c77="" class="far fa-trash-alt"></i>
                   </button>
@@ -65,6 +218,5 @@
         </div>
       </div>
     </div>
-    
   </div>
 </main>

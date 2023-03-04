@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Administrador } from '../../interfaces/administrador';
 import { Cliente } from '../../interfaces/cliente';
 import { Datos } from '../../interfaces/datos';
@@ -15,7 +16,7 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./registrar-usuario.component.css'],
 })
 export class RegistrarUsuarioComponent {
-  constructor(private loginServices: LoginService) {}
+  constructor(private loginServices: LoginService, private router: Router) {}
 
   @Input() listaDocumentos: TipoDocumento[] = [
     {
@@ -334,7 +335,13 @@ export class RegistrarUsuarioComponent {
         window.alert('Campo correo fuera de rango');
         return false;
       } else {
+        if(this.loginServices.esEmailValido(this.datosRegistro.correo!.trim().toLocaleLowerCase())){
         return true;
+          
+        }else{
+        window.alert('El correo no cumple el formato');
+          return false
+        }
       }
     }
   }
@@ -432,21 +439,14 @@ export class RegistrarUsuarioComponent {
 
   //-------------------
   registrarAdministrador() {
-    console.log('Validando registro..... paso 0');
-
     this.usuario.idUsuario = Number(this.datosRegistro.cedula);
     this.usuario.correo = this.datosRegistro.correo!;
     this.usuario.contrasena = this.datosRegistro.contrasena!;
     this.usuario.tipoUsuario = 'Administrador';
-    console.log(this.usuario);
-
-    console.log('paso 1');
     try {
       this.loginServices.registrarUsuario(this.usuario).subscribe((usuario) => {
-        console.log('paso 2');
-
         if (usuario != null) {
-          window.alert('Usuario Administrador registrado correctamente');
+          // window.alert('Usuario Administrador registrado correctamente');
           this.administrador.idPersona = Number(this.datosRegistro.cedula);
           this.administrador.primerNombre = this.datosRegistro.primerNombre!;
           this.administrador.segundoNombre = this.datosRegistro.segundoNombre!;
@@ -467,12 +467,15 @@ export class RegistrarUsuarioComponent {
               .registrarAdministrador(this.administrador)
               .subscribe((administrador) => {
                 if (administrador != null) {
-                  window.alert(
-                    'Datos Del Administrador guardados correctamente'
-                  );
+                  // window.alert(
+                  //   'Datos Del Administrador guardados correctamente'
+                  // );
+
+                  this.router.navigateByUrl('');
                   console.log(administrador);
                 } else {
                   console.log('Id ya registrado');
+                  window.alert('Id ya registrado');
                 }
               });
           } catch (error) {
@@ -492,25 +495,16 @@ export class RegistrarUsuarioComponent {
       window.alert('Datos del usuario administrador no se pueden guardar');
       window.alert(error);
     }
-
-   // this.limpiarDatos();
   }
   registrarDocente() {
-     console.log('Validando registro..... paso 0');
-
     this.usuario.idUsuario = Number(this.datosRegistro.cedula);
     this.usuario.correo = this.datosRegistro.correo!;
     this.usuario.contrasena = this.datosRegistro.contrasena!;
     this.usuario.tipoUsuario = 'Docente';
-    console.log(this.usuario);
-
-    console.log('paso 1');
     try {
       this.loginServices.registrarUsuario(this.usuario).subscribe((usuario) => {
-        console.log('paso 2');
-
         if (usuario != null) {
-          window.alert('Usuario Docente registrado correctamente');
+          // window.alert('Usuario Docente registrado correctamente');
           this.docente.idPersona = Number(this.datosRegistro.cedula);
           this.docente.primerNombre = this.datosRegistro.primerNombre!;
           this.docente.segundoNombre = this.datosRegistro.segundoNombre!;
@@ -528,10 +522,11 @@ export class RegistrarUsuarioComponent {
               .registrarDocente(this.docente)
               .subscribe((docente) => {
                 if (docente != null) {
-                  window.alert('Datos Del Docente guardados correctamente');
+                  // window.alert('Datos Del Docente guardados correctamente');
+                  this.router.navigateByUrl('');
                   console.log(docente);
                 } else {
-                  console.log('Id ya registrado');
+                  window.alert("Id ya registrado")
                 }
               });
           } catch (error) {
@@ -539,9 +534,6 @@ export class RegistrarUsuarioComponent {
             window.alert('Datos del Docente no se pueden guardar');
           }
         } else {
-          console.log('error paso 2 ');
-
-          console.log('Id user ya registrada');
         }
       });
     } catch (error) {
@@ -551,26 +543,16 @@ export class RegistrarUsuarioComponent {
       window.alert('Datos del usuario Docente no se pueden guardar');
       window.alert(error);
     }
-
-  //  this.limpiarDatos();
   }
   registrarEstudiantes() {
-   
-    console.log('Validando registro..... paso 0');
-
     this.usuario.idUsuario = Number(this.datosRegistro.cedula);
     this.usuario.correo = this.datosRegistro.correo!;
     this.usuario.contrasena = this.datosRegistro.contrasena!;
     this.usuario.tipoUsuario = 'Estudiante';
-    console.log(this.usuario);
-
-    console.log('paso 1');
     try {
       this.loginServices.registrarUsuario(this.usuario).subscribe((usuario) => {
-        console.log('paso 2');
-
         if (usuario != null) {
-          window.alert('Usuario Estudiante registrado correctamente');
+          // window.alert('Usuario Estudiante registrado correctamente');
           this.estudiante.idPersona = Number(this.datosRegistro.cedula);
           this.estudiante.primerNombre = this.datosRegistro.primerNombre!;
           this.estudiante.segundoNombre = this.datosRegistro.segundoNombre!;
@@ -589,10 +571,12 @@ export class RegistrarUsuarioComponent {
               .registrarEstudiante(this.estudiante)
               .subscribe((estudiante) => {
                 if (estudiante != null) {
-                  window.alert('Datos Del Estudiante guardados correctamente');
+                  // window.alert('Datos Del Estudiante guardados correctamente');
+                  this.router.navigateByUrl('');
                   console.log(estudiante);
                 } else {
                   console.log('Id ya registrado');
+                  window.alert('Id ya registrado');
                 }
               });
           } catch (error) {
@@ -612,37 +596,25 @@ export class RegistrarUsuarioComponent {
       window.alert('Datos del usuario Estudiante no se pueden guardar');
       window.alert(error);
     }
-
   }
   registrarCliente() {
-    console.log('Validando registro..... paso 0');
-
     this.usuario.idUsuario = Number(this.datosRegistro.cedula);
     this.usuario.correo = this.datosRegistro.correo!;
     this.usuario.contrasena = this.datosRegistro.contrasena!;
     this.usuario.tipoUsuario = 'Cliente';
-    console.log(this.usuario);
-
-    console.log('paso 1');
     try {
       this.loginServices.registrarUsuario(this.usuario).subscribe((usuario) => {
-        console.log('paso 2');
-
         if (usuario != null) {
-          window.alert('Usuario Cliente registrado correctamente');
+          // window.alert('Usuario Cliente registrado correctamente');
           this.cliente.idPersona = Number(this.datosRegistro.cedula);
           this.cliente.primerNombre = this.datosRegistro.primerNombre!;
           this.cliente.segundoNombre = this.datosRegistro.segundoNombre!;
-          this.cliente.primerApellido =
-            this.datosRegistro.primerApellido!;
-          this.cliente.segundoApellido =
-            this.datosRegistro.segundoApellido!;
+          this.cliente.primerApellido = this.datosRegistro.primerApellido!;
+          this.cliente.segundoApellido = this.datosRegistro.segundoApellido!;
           this.cliente.telefono = Number(this.datosRegistro.telefono);
           this.cliente.direccion = this.datosRegistro.direccion!;
           this.cliente.correo = this.datosRegistro.correo!;
-          this.cliente.idCliente = Number(
-            this.datosRegistro.cedula
-          );
+          this.cliente.idCliente = Number(this.datosRegistro.cedula);
           console.log(usuario);
 
           try {
@@ -650,12 +622,12 @@ export class RegistrarUsuarioComponent {
               .registrarCliente(this.cliente)
               .subscribe((cliente) => {
                 if (cliente != null) {
-                  window.alert(
-                    'Datos Del Cliente guardados correctamente'
-                  );
+                  // window.alert('Datos Del Cliente guardados correctamente');
+                  this.router.navigateByUrl('');
                   console.log(cliente);
                 } else {
                   console.log('Id ya registrado');
+                  window.alert('Id ya registrado');
                 }
               });
           } catch (error) {
@@ -675,8 +647,9 @@ export class RegistrarUsuarioComponent {
       window.alert('Datos del usuario cliente no se pueden guardar');
       window.alert(error);
     }
-
   }
+
+  
   registrarUsuario() {}
 
   limpiarDatos() {
